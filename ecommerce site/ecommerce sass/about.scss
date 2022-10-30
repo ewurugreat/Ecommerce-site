@@ -1,0 +1,492 @@
+@import "var";
+@import "color";
+@import "reset";
+@import "mixin";
+@import "responsive";
+
+// #################################### CREATING NAVIGATION BAR #####################################################
+.fixed_position {
+    overflow: hidden;
+    background-color: $whiteColor;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999999999999999999999999;
+    .fimg {
+        height: 55px;
+        overflow: hidden;
+        position: relative;
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 9vh;
+        }
+    }
+    .nav_first {
+        @include centerDiv(center, "");
+        background-color: $whiteColor;
+        padding: 10px 0;
+        border-bottom: 1px solid gray;
+
+        .nav_first_margin {
+            @include centerDiv(space-between, "");
+            width: $blendWIdth;
+            .show {
+                transform: rotate(180deg);
+                & > *:nth-child(1) {
+                    transform: rotate(-45deg) translate(-9px, 6px);
+                    background-color: $yellowColor;
+                }
+                & > *:nth-child(2) {
+                    opacity: 0;
+                }
+
+                & > *:nth-child(3) {
+                    transform: rotate(45deg) translate(-8px, -8px);
+                    width: 35px !important;
+                    background-color: $yellowColor;
+                }
+            }
+            .hand_burger {
+                display: none;
+                cursor: pointer;
+                & > * {
+                    width: 35px;
+                    height: 4px;
+                    background-color: $blackColor;
+                    margin: 5px 0;
+                }
+                & > *:nth-child(2) {
+                    width: 25px;
+                }
+                & > *:last-child {
+                    width: 20px;
+                }
+            }
+            .wrapper {
+                @include centerDiv(space-between, "");
+                width: 80%;
+            }
+            .nav_first_link {
+                @include centerDiv(space-between, "");
+                .nav_login_container {
+                    @include centerDiv(space-between, "");
+                }
+                .nav_login {
+                    @include centerDiv(center, column);
+                    a {
+                        padding: 0 6px;
+                        margin: 0 0 1px 0;
+                        color: $blackColor;
+                        &:hover {
+                            color: $yellowColor;
+                        }
+                    }
+                }
+                li {
+                    padding: 0 16px;
+                    .fav {
+                        position: relative;
+                        .heart_not {
+                            position: absolute;
+                            top: 30%;
+                            right: 10%;
+                            background-color: $yellowColor;
+                            padding: 2px 6px;
+                            border-radius: $border-radius-xl;
+                        }
+                    }
+                    .cart {
+                        position: relative;
+                        .cart_not {
+                            position: absolute;
+                            top: -100%;
+                            right: -50%;
+                            background-color: $yellowColor;
+                            padding: 2px 6px;
+                            border-radius: $border-radius-xl;
+                        }
+                    }
+                    a {
+                        color: $blackColor;
+                        font-size: $font-size-sm;
+                    }
+                    i {
+                        font-size: $font-size-sm * 2;
+                        color: $blackColor;
+                        font-weight: $font-bold-0;
+                    }
+                }
+            }
+            .nav_search {
+                @include centerDiv(space-between, "");
+                width: 65%;
+                box-shadow: 0px 0px 1px $blackColor;
+                button {
+                    padding: 10px 14px;
+                    background-color: $yellowColor;
+                    color: $whiteColor;
+                }
+
+                button:first-child {
+                    background-color: whitesmoke;
+                    color: $blackColor;
+                    font-weight: $font-bold-1;
+                }
+                input {
+                    width: 100%;
+                    padding: 10px 14px;
+                }
+            }
+            .logo {
+                h2 {
+                    font-size: 1.7rem;
+                    color: $blackColor;
+                    span {
+                        color: $yellowColor;
+                    }
+                }
+            }
+        }
+    }
+    .nav_container {
+        @include centerDiv(center, "");
+        background-color: $blackColor;
+        .nav_margin {
+            width: 95%;
+            ul {
+                @include centerDiv(space-between, "");
+                .first_link {
+                    @include centerDiv(center, "");
+
+                    .item::after {
+                        content: "|";
+                        position: absolute;
+                        color: $bodyBackground;
+                        right: 0;
+                    }
+                    a {
+                        position: relative;
+                        padding: 7px 12px;
+                        color: $bodyBackground;
+                        display: block;
+                        &:hover {
+                            color: $yellowColor;
+                        }
+                    }
+                }
+                .down_links {
+                    @include centerDiv(center, "");
+                    li {
+                        .active {
+                            color: $whiteColor !important;
+                            background-color: $yellowColor;
+                        }
+
+                        a {
+                            padding: 7px 12px;
+                            color: $bodyBackground;
+                            display: block;
+                            &:hover {
+                                color: $yellowColor;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// #################################### END OF NAVIGATION BAR #####################################################
+
+.about_us_container {
+    @include centerDiv(center, "");
+    height: 480px;
+    margin: 8.91rem 0 0 0;
+    position: relative;
+    overflow: hidden;
+
+    .bg_img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #2423238a;
+        }
+
+        img {
+            height: 100vh;
+        }
+    }
+    .about_us_margin {
+        width: $blendWIdth;
+        @include centerDiv(center, "");
+        .about_us_content {
+            text-align: center;
+            p {
+                color: $whiteColor;
+                margin: 0 0 7px 0;
+                font-size: $font-size-sm * 1.5;
+            }
+            h2 {
+                margin: 0 0 10px 0;
+                font-size: $font-size-sm * 3.4;
+                color: $whiteColor;
+            }
+        }
+    }
+}
+
+.our_mission_container {
+    @include centerDiv(center, "");
+    margin: 3rem 0 3rem 0;
+    .our_mission_margin {
+        width: $blendWIdth;
+        .our_mission_flex {
+            @include centerDiv(space-between, "");
+            #item2 {
+                @include centerDiv(space-between, column);
+
+                #mission2 {
+                    height: 180px;
+                    overflow: hidden;
+                }
+
+                .our_mission_content {
+                    @include centerDiv(space-between, "");
+
+                    .content {
+                        overflow: hidden;
+                        margin: 0 5px;
+                    }
+                }
+            }
+            #item1 {
+                text-align: left;
+                margin: 0 14px 0 0;
+                p {
+                    line-height: 27px;
+                }
+                h2 {
+                    font-size: $font-size-sm * 2.5;
+                }
+            }
+        }
+    }
+}
+
+.leader_container {
+    @include centerDiv(center, column);
+    background-color: $whiteColor;
+    padding: 40px 0 40px 0;
+    .learder_title {
+        text-align: center;
+        margin: 0 0 5rem 0;
+        p {
+            margin: 7px 0 0 0;
+        }
+        h2 {
+            font-size: $font-size-sm * 2.7;
+        }
+    }
+    .leader_margin {
+        width: $blendWIdth;
+        @include centerDiv(center, "");
+        .leader_content {
+            @include centerDiv(center, column);
+            width: 26.99999%;
+            .leader_dec {
+                text-align: center;
+                h2 {
+                    margin: 12px 0;
+                    color: $blackColor;
+                }
+                p {
+                    color: grey;
+                }
+                .dec_icons {
+                    a {
+                        i {
+                            padding: 10px 12px;
+                            color: $blackColor;
+                        }
+                    }
+                }
+            }
+            .leader_img {
+                // text-align: center;
+                border-radius: 50%;
+                overflow: hidden;
+                width: 150px;
+                height: 150px;
+            }
+        }
+    }
+}
+
+.hiring_container {
+    @include centerDiv(center, column);
+    margin: 3rem 0 3rem 0;
+    .hiring_margin {
+        width: $blendWIdth;
+        .hiring_content {
+            .content {
+                @include centerDiv(space-between, "");
+                padding: 25px 0;
+                border-bottom: 1px solid grey;
+                .content_item {
+                    button{
+                        background-color: $whiteColor;
+                        padding: 8px 18px;
+                    }
+                    p{
+                        margin: 0.4rem 0 0 0;
+                    }
+                    h2{
+                        color: $blackColor;
+                    }
+                }
+            }
+        }
+        .hiring_header {
+            text-align: center;
+            p {
+                margin: 0.8rem 0 0;
+            }
+            h2 {
+                font-size: $font-size-sm * 2.7;
+                color: $blackColor;
+            }
+        }
+    }
+}
+
+//  #################################### CREATING FOOTER #####################################################
+footer {
+    @include centerDiv(center, column);
+    background-color: #282828;
+    .copy_section {
+        @include centerDiv(center, "");
+        background-color: #323232;
+        width: 100%;
+        margin: 17px 0 0 0;
+        .compy_margin {
+            @include centerDiv(space-between, "");
+            width: $blendWIdth;
+            padding: 12px 0px;
+
+            a {
+                color: #999;
+                padding: 10px 4px 0 0;
+                font-size: 12px;
+                text-align: center;
+            }
+            p {
+                color: #999;
+                font-size: 12px;
+            }
+            .copy_icons {
+                width: auto;
+
+                i {
+                    padding: 10px 12px;
+                    border: 1px solid grey;
+                    border-radius: $border-radius-xl;
+                    margin: 0 0 0 7px;
+                    color: #999;
+                    min-width: 40px;
+                }
+            }
+        }
+    }
+    .footer_margin {
+        width: $blendWIdth;
+        .footer_links {
+            @include centerDiv(space-between, "");
+            padding: 0 100px;
+            .footer_content {
+                margin: 20px 0 0 0;
+
+                .subscibe_con {
+                    @include centerDiv(flex-start, "");
+                    margin: 5px 0 0 0;
+                    button {
+                        padding: 8px 14px;
+                        background-color: $yellowColor;
+                        color: $whiteColor;
+                    }
+                    input {
+                        padding: 8px 14px;
+                        color: $bodyBackground;
+
+                        // border: 1px solid $whiteColor;
+                    }
+                }
+                p {
+                    color: #999;
+                    margin: 10px 0;
+                }
+                h2 {
+                    color: $bodyBackground;
+                    text-align: left;
+                    font-size: $font-size-sm * 1.3;
+                    position: relative;
+                    margin: 0 0 10px 0;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        border: 2px solid $whiteColor;
+                        width: 30px;
+                    }
+                }
+                a {
+                    display: block;
+                    padding: 5px 0 0 0;
+                    color: #999;
+                    text-transform: capitalize;
+                    font-weight: 400;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        .footer_icon_section {
+            padding: 30px 0;
+            @include centerDiv(space-between, "");
+            border-bottom: 0.1px solid grey;
+
+            .icons {
+                width: 40.99999%;
+                text-align: center;
+                p {
+                    color: $whiteColor;
+                    margin: 7px 0 0 0;
+                }
+                i {
+                    font-size: $font-size-sm * 1.6;
+                    padding: 10px 14px;
+                    background-color: $yellowColor;
+                    border-radius: $border-radius-xl;
+                    color: $whiteColor;
+                }
+            }
+        }
+    }
+}
+//  #################################### END FOOTER #####################################################

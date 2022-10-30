@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h2 id="demo"></h2>
+  <button onclick="myFunction()">Click me</button>
+  <button onclick="myMinus()">minus</button>
+</body>
+<script>
+  var slideInxex = 0;
+  var look;
+  look = localStorage.getItem("add");
+  slideInxex = look;
+  function myFunction() {
+    localStorage.setItem("add", slideInxex++)
+  }
+
+  // function myMinus(){
+  //     localStorage.setItem("add", slideInxex--)
+  // }
+  // slideInxex = look;
+
+  document.getElementById("demo").innerHTML = look;
+</script>
+
+</html>

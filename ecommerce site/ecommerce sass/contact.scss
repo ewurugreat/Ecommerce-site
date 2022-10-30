@@ -1,0 +1,585 @@
+@import "var";
+@import "color";
+@import "reset";
+@import "mixin";
+@import "responsive";
+
+// #################################### CREATING NAVIGATION BAR #####################################################
+.fixed_position {
+    overflow: hidden;
+    background-color: $whiteColor;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999999999999999999999999;
+    .fimg {
+        height: 55px;
+        overflow: hidden;
+        position: relative;
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 9vh;
+        }
+    }
+    .nav_first {
+        @include centerDiv(center, "");
+        background-color: $whiteColor;
+        padding: 10px 0;
+        border-bottom: 1px solid gray;
+
+        .nav_first_margin {
+            @include centerDiv(space-between, "");
+            width: $blendWIdth;
+            .show {
+                transform: rotate(180deg);
+                & > *:nth-child(1) {
+                    transform: rotate(-45deg) translate(-9px, 6px);
+                    background-color: $yellowColor;
+                }
+                & > *:nth-child(2) {
+                    opacity: 0;
+                }
+
+                & > *:nth-child(3) {
+                    transform: rotate(45deg) translate(-8px, -8px);
+                    width: 35px !important;
+                    background-color: $yellowColor;
+                }
+            }
+            .hand_burger {
+                display: none;
+                cursor: pointer;
+                & > * {
+                    width: 35px;
+                    height: 4px;
+                    background-color: $blackColor;
+                    margin: 5px 0;
+                }
+                & > *:nth-child(2) {
+                    width: 25px;
+                }
+                & > *:last-child {
+                    width: 20px;
+                }
+            }
+            .wrapper {
+                @include centerDiv(space-between, "");
+                width: 80%;
+            }
+            .nav_first_link {
+                @include centerDiv(space-between, "");
+                .nav_login_container {
+                    @include centerDiv(space-between, "");
+                }
+                .nav_login {
+                    @include centerDiv(center, column);
+                    a {
+                        padding: 0 6px;
+                        margin: 0 0 1px 0;
+                        color: $blackColor;
+                        &:hover {
+                            color: $yellowColor;
+                        }
+                    }
+                }
+                li {
+                    padding: 0 16px;
+                    .fav {
+                        position: relative;
+                        .heart_not {
+                            position: absolute;
+                            top: 30%;
+                            right: 10%;
+                            background-color: $yellowColor;
+                            padding: 2px 6px;
+                            border-radius: $border-radius-xl;
+                        }
+                    }
+                    .cart {
+                        position: relative;
+                        .cart_not {
+                            position: absolute;
+                            top: -100%;
+                            right: -50%;
+                            background-color: $yellowColor;
+                            padding: 2px 6px;
+                            border-radius: $border-radius-xl;
+                        }
+                    }
+                    a {
+                        color: $blackColor;
+                        font-size: $font-size-sm;
+                    }
+                    i {
+                        font-size: $font-size-sm * 2;
+                        color: $blackColor;
+                        font-weight: $font-bold-0;
+                    }
+                }
+            }
+            .nav_search {
+                @include centerDiv(space-between, "");
+                width: 65%;
+                box-shadow: 0px 0px 1px $blackColor;
+                button {
+                    padding: 10px 14px;
+                    background-color: $yellowColor;
+                    color: $whiteColor;
+                }
+
+                button:first-child {
+                    background-color: whitesmoke;
+                    color: $blackColor;
+                    font-weight: $font-bold-1;
+                }
+                input {
+                    width: 100%;
+                    padding: 10px 14px;
+                }
+            }
+            .logo {
+                h2 {
+                    font-size: 1.7rem;
+                    color: $blackColor;
+                    span {
+                        color: $yellowColor;
+                    }
+                }
+            }
+        }
+    }
+    .nav_container {
+        @include centerDiv(center, "");
+        background-color: $blackColor;
+        .nav_margin {
+            width: 95%;
+            ul {
+                @include centerDiv(space-between, "");
+                .first_link {
+                    @include centerDiv(center, "");
+
+                    .item::after {
+                        content: "|";
+                        position: absolute;
+                        color: $bodyBackground;
+                        right: 0;
+                    }
+                    a {
+                        position: relative;
+                        padding: 7px 12px;
+                        color: $bodyBackground;
+                        display: block;
+                        &:hover {
+                            color: $yellowColor;
+                        }
+                    }
+                }
+                .down_links {
+                    @include centerDiv(center, "");
+                    li {
+                        .active {
+                            color: $whiteColor !important;
+                            background-color: $yellowColor;
+                        }
+
+                        a {
+                            padding: 7px 12px;
+                            color: $bodyBackground;
+                            display: block;
+                            &:hover {
+                                color: $yellowColor;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// #################################### END OF NAVIGATION BAR #####################################################
+
+.contact_us_container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 8.9rem 0 0 0;
+    height: 480px;
+    overflow: hidden;
+    .contact_us_bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: #242323b6;
+        }
+        img {
+            height: 100vh;
+        }
+    }
+    .contact_us_flex {
+        @include centerDiv(space-between, "");
+        width: 100%;
+        #contact_section1{
+            margin-bottom: 15px;
+        }
+        #contact_section2 {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: $yellowColor;
+            height: 100%;
+            width: 270px;
+            padding: 0 14px;
+            #media_section {
+                margin: 22px 0 0 0 !important;
+                i {
+                    font-size: $font-size-sm * 1.3;
+                    padding: 10px 20px;
+                }
+            }
+            #info {
+                margin: 50px 0 30px 0px;
+                font-weight: bold;
+                // color: $b;
+                text-transform: capitalize;
+            }
+            .info_detail {
+                @include centerDiv(flex-start, "");
+                margin: 0 0 20px 0;
+                .info_dec {
+                    p {
+                        margin: 5px 0 0 0;
+                        color: $whiteColor;
+                        font-size: $font-size-sm;
+                    }
+                    h2 {
+                        font-size: $font-size-sm * 1.4;
+                    }
+                }
+                i {
+                    font-size: $font-size-sm * 2.5;
+                    font-weight: $font-bold-0;
+                    color: $bodyBackground;
+                    padding: 0 12px 0px;
+                }
+            }
+        }
+        button {
+            padding: 9px 14px;
+            background-color: $yellowColor;
+            color: $whiteColor;
+            margin: 20px 0 0 0;
+            text-transform: uppercase;
+        }
+        #contact_section1 {
+            width: 50%;
+            padding: 0 0 0 50px;
+            p {
+                color: $bodyBackground;
+                margin: 0 0 14px 0;
+                line-height: 25px;
+            }
+            h2 {
+                position: relative;
+                margin: 0 0 14px 0;
+                color: $bodyBackground;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    right: 101%;
+                    top: 0;
+                    bottom: 0;
+                    border: 3px solid $yellowColor;
+                }
+            }
+            #contact_h {
+                font-size: $font-size-sm * 2.4;
+                text-transform: capitalize;
+            }
+        }
+    }
+}
+
+.call_container {
+    @include centerDiv(center, "");
+    .call_margin {
+        @include centerDiv(space-between, "");
+        padding: 30px 0;
+        width: $blendWIdth;
+        .call_item {
+            button {
+                padding: 10px 14px;
+                border: 2px solid $yellowColor;
+                min-width: 240px;
+                text-align: center;
+                background-color: $whiteColor;
+                a {
+                    color: $yellowColor;
+                }
+            }
+            p {
+                font-weight: bold;
+                text-transform: capitalize;
+                text-align: center;
+            }
+            h2 {
+                margin: 0 0 8px 0;
+                color: $yellowColor;
+            }
+        }
+    }
+}
+
+.our_info_container {
+    @include centerDiv(center, "");
+    .our_info_margin {
+        @include centerDiv(flex-start, "");
+        width: 85%;
+        #info2 {
+            background-color: $whiteColor;
+            box-shadow: 0px 0 2px grey;
+            width: 65%;
+            align-self: flex-start;
+            padding: 40px 25px 30px 25px;
+            form {
+                .form_container {
+                    margin: 30px 0 0 0;
+                    .input_section {
+                        @include centerDiv(space-between, "");
+                        button {
+                            font-size: $font-size-sm * 1.4;
+                            padding: 10px 14px;
+                            margin-top: 17px;
+                            background-color: $yellowColor;
+                            color: $whiteColor;
+                            border-radius: 5px;
+                        }
+                        textarea {
+                            padding: 15px 20px;
+                            width: 100%;
+                            border: 1px solid rgba(128, 128, 128, 0.575);
+                            resize: horizontal;
+                            &::placeholder {
+                                font-size: $font-size-sm * 1.4;
+                            }
+                        }
+                        .input_item {
+                            width: 50%;
+                            margin: 0 10px 17px 0;
+
+                            input {
+                                border: 1px solid rgba(128, 128, 128, 0.575);
+                                width: 100%;
+                                padding: 15px 20px;
+                                border-radius: 5px;
+                                &::placeholder {
+                                    font-size: $font-size-sm * 1.3;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .form_headings {
+                    p {
+                        margin: 10px 0;
+                        color: rgb(61, 61, 61);
+                    }
+                    h2 {
+                        font-size: $font-size-sm * 2.4;
+                    }
+                }
+            }
+        }
+
+        #info1 {
+            width: 380px;
+            margin: 0 40px 0 0;
+            align-self: flex-start;
+
+            .info_item {
+                @include centerDiv(flex-start, "");
+                background-color: $whiteColor;
+                padding: 18px 14px;
+                margin: 0 0 15px 0;
+                box-shadow: 1px 0 2px grey;
+                border-radius: 3px;
+                .info_dec {
+                    p {
+                        color: rgb(61, 61, 61);
+                    }
+                }
+                i {
+                    @include centerDiv(center, "");
+                    font-size: $font-size-sm * 1.4;
+                    color: $yellowColor;
+                    padding: 20px;
+                    background-color: #fd7e0041;
+                    margin: 0 12px 0 0;
+                    border-radius: $border-radius-xl;
+                    min-width: 60px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+.contact_map_container {
+    @include centerDiv(center, "");
+    background-color: $whiteColor;
+    margin-top: 40px;
+    .contact_map_margin {
+        width: $blendWIdth;
+        padding: 30px 0;
+        .map_section {
+            margin-top: 25px;
+        }
+        .contact_map_heading {
+            text-align: center;
+            p {
+                margin-bottom: 10px;
+            }
+            h2 {
+                font-size: $font-size-sm * 2.2;
+                margin: 10px 0;
+            }
+        }
+        .map_section {
+            iframe {
+                width: 100%;
+                height: 300px;
+            }
+        }
+    }
+}
+//  #################################### CREATING FOOTER #####################################################
+footer {
+    @include centerDiv(center, column);
+    background-color: #282828;
+    .copy_section {
+        @include centerDiv(center, "");
+        background-color: #323232;
+        width: 100%;
+        margin: 17px 0 0 0;
+        .compy_margin {
+            @include centerDiv(space-between, "");
+            width: $blendWIdth;
+            padding: 12px 0px;
+
+            a {
+                color: #999;
+                padding: 10px 4px 0 0;
+                font-size: 12px;
+                text-align: center;
+            }
+            p {
+                color: #999;
+                font-size: 12px;
+            }
+            .copy_icons {
+                width: auto;
+
+                i {
+                    padding: 10px 12px;
+                    border: 1px solid grey;
+                    border-radius: $border-radius-xl;
+                    margin: 0 0 0 7px;
+                    color: #999;
+                    min-width: 40px;
+                }
+            }
+        }
+    }
+    .footer_margin {
+        width: $blendWIdth;
+        .footer_links {
+            @include centerDiv(space-between, "");
+            padding: 0 100px;
+            .footer_content {
+                margin: 20px 0 0 0;
+
+                .subscibe_con {
+                    @include centerDiv(flex-start, "");
+                    margin: 5px 0 0 0;
+                    button {
+                        padding: 8px 14px;
+                        background-color: $yellowColor;
+                        color: $whiteColor;
+                    }
+                    input {
+                        padding: 8px 14px;
+                        color: $bodyBackground;
+
+                        // border: 1px solid $whiteColor;
+                    }
+                }
+                p {
+                    color: #999;
+                    margin: 10px 0;
+                }
+                h2 {
+                    color: $bodyBackground;
+                    text-align: left;
+                    font-size: $font-size-sm * 1.3;
+                    position: relative;
+                    margin: 0 0 10px 0;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        border: 2px solid $whiteColor;
+                        width: 30px;
+                    }
+                }
+                a {
+                    display: block;
+                    padding: 5px 0 0 0;
+                    color: #999;
+                    text-transform: capitalize;
+                    font-weight: 400;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        .footer_icon_section {
+            padding: 30px 0;
+            @include centerDiv(space-between, "");
+            border-bottom: 0.1px solid grey;
+
+            .icons {
+                width: 40.99999%;
+                text-align: center;
+                p {
+                    color: $whiteColor;
+                    margin: 7px 0 0 0;
+                }
+                i {
+                    font-size: $font-size-sm * 1.6;
+                    padding: 10px 14px;
+                    background-color: $yellowColor;
+                    border-radius: $border-radius-xl;
+                    color: $whiteColor;
+                }
+            }
+        }
+    }
+}
+//  #################################### END FOOTER #####################################################

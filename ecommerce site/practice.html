@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: helvetica;
+        }
+
+        div.gallery {
+            border: 1px solid #ccc;
+        }
+
+        div.gallery:hover {
+            border: 1px solid #777;
+        }
+
+        div.gallery img {
+            width: 100%;
+            height: auto;
+        }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+            background-color: black;
+            color: white;
+            display: block;
+            cursor: pointer;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .responsive {
+            padding: 0 6px;
+            float: left;
+            width: 24.99999%;
+            min-height: 100px;
+            max-height: 400px;
+            overflow: hidden;
+        }
+
+        @media only screen and (max-width: 700px) {
+            .responsive {
+                width: 49.99999%;
+                margin: 6px 0;
+            }
+        }
+
+        @media only screen and (max-width: 500px) {
+            .responsive {
+                width: 100%;
+            }
+        }
+
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        .price {
+            text-align: right;
+            padding: 10px 0;
+        }
+
+        img {
+            height: 40vh !important;
+        }
+
+        table {
+            width: 90%;
+            margin: 25rem auto auto auto;
+            text-align: center;
+            border-collapse: collapse;
+
+        }
+
+        th {
+            background-color: rgba(9, 59, 9, 0.719);
+            padding: 0;
+            margin: 0;
+        }
+
+        h3 {
+            margin: 0;
+            padding: 3px 0px;
+        }
+
+        .cartBox {
+            margin: 100px 0 0 0;
+
+        }
+
+        td {
+            border: 1px solid grey;
+        }
+
+        .img_c img {
+            height: 10vh !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cart">
+        <p>0</p>
+    </div>
+
+    <div class="responsive">
+        <div class="gallery">
+
+            <img src="./images/g1 (1).png" alt="Cinque Terre" width="600" height="400">
+            <div class="title">men hoodie1</div>
+            <div class="price"> <span>$ 1000</span></div>
+            <div class="desc btn_primary">add</div>
+        </div>
+    </div>
+
+
+    <div class="responsive">
+        <div class="gallery">
+
+            <img src="./images/g1 (2).png" alt="Forest" width="600" height="400">
+            <div class="title">men hoodie2</div>
+            <div class="price"><span> $700</span></div>
+            <div class="desc btn_primary">add</div>
+        </div>
+    </div>
+
+    <div class="responsive">
+        <div class="gallery">
+
+            <img src="./images/g1 (3).png" alt="Northern Lights" width="600" height="400">
+            <div class="title">men hoodie3</div>
+            <div class="price"><span>$ 300</span></div>
+            <div class="desc btn_primary">add</div>
+        </div>
+    </div>
+
+    <div class="responsive">
+        <div class="gallery">
+            <img src="./images/g1 (4).png" alt="Mountains" width="600" height="400">
+            <div class="title">men hoodie4</div>
+            <div class="price"> <span> $1000</span></div>
+            <div class="desc btn_primary">add</div>
+        </div>
+    </div>
+
+    <div class="cartBox">
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>
+                        <h3>ITEM</h3>
+                    </th>
+                    <th>ITEMS NAME</th>
+                    <th>
+                        <h3>PRICE</h3>
+                    </th>
+                    <th>
+                        <h3>QUANTITY</h3>
+                    </th>
+                    <th>
+                        <h3>TOTAL</h3>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+            <tr>
+                <!-- <td><input type="checkbox" name="" id=""></td> -->
+
+                <td colspan="4">
+                    <h3>GRAND TOTAL</h3>
+                </td>
+
+                <td colspan="3" class="grand-total">
+                    <h3><strong>$0</strong></h3>
+                </td>
+
+            </tr>
+
+
+        </table>
+    </div>
+
+</body>
+
+<script>
+    let add_to_cart_btns = document.getElementsByClassName("btn_primary");
+    let main_container = document.getElementsByTagName("tbody")[0];
+
+
+    let quantity_fields = document.getElementsByClassName("num");
+
+  
+    for (let i = 0; i < add_to_cart_btns.length; i++) {
+        add_to_cart_btns[i].addEventListener("click", addToCart);
+    }
+
+    function addToCart(event) {
+
+        let btn = event.target;
+        let btn_parent = btn.parentElement;
+        let itemImage = btn_parent.children[0].src;
+        let itemName = btn_parent.children[1].innerHTML;
+        let itemPrice = btn_parent.children[2].innerHTML;
+
+
+        let itemContainer = document.createElement("tr");
+
+        itemContainer.innerHTML = `<td><input class="uk-checkbox" type="checkbox" name="" id=""></td>
+            <td><div class="img_c"><img class="uk-preserve-width" src="${itemImage}" alt=""></div></td>
+            <td><h3 class="item-name">${itemName}</h3></td>
+            <td class="item-price"><h3>${itemPrice}</h3></td>
+            <td><input type="number" class="num" value="1"></td>
+            <td class="total-price">${itemPrice}</td>
+            <td> <button type="button" class="btnss">Remove</button></td> `
+        main_container.insertAdjacentElement("beforeend", itemContainer);
+
+        for (let i = 0; i < quantity_fields.length; i++) {
+            quantity_fields[i].addEventListener("input", updateTotal)
+        }
+        for (let i = 0; i < removeBtns.length; i++) {
+        removeBtns[i].addEventListener("click", myRemove)
+    }
+        grandTotal()
+
+    }
+
+    function updateTotal(event) {
+        let number_of_items = event.target;
+        let number_of_items_parent = number_of_items.parentElement.parentElement;
+        let price_field = number_of_items_parent.getElementsByClassName("item-price")[0];
+        let total_field = number_of_items_parent.getElementsByClassName("total-price")[0];
+        let price_field_content = price_field.children[0].innerText.replace("$", "");
+        console.log(price_field_content)
+
+        total_field.children[0].innerText = "$" + number_of_items.value * price_field_content
+        if (isNaN(number_of_items.value) || number_of_items.value < 1) {
+            number_of_items.value = 1;
+        }
+        grandTotal()
+
+
+    }
+
+    // grandTotal()
+    function grandTotal() {
+        let total = 0;
+        let grand_total = document.getElementsByClassName("grand-total")[0];
+        let total_price = document.getElementsByClassName("total-price");
+        for (let i = 0; i < total_price.length; i++) {
+            let total_price_content = parseInt(total_price[i].innerText.replace("$", ""));
+            total += total_price_content;
+        }
+        grand_total.children[0].innerText = '$' + total
+    }
+
+    let removeBtns = document.getElementsByClassName("btnss");
+   
+
+function myRemove(event){
+ 
+  event.target.parentElement.parentElement.remove()
+     grandTotal()
+}
+</script>
+
+</html>

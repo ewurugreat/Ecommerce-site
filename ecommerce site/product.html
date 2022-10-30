@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        font-family: helvetica;
+
+    }
+
+    form {
+        width: 60%;
+        border: 2px solid whitesmoke;
+        margin: auto;
+    }
+
+    .form_item {
+        display: flex;
+        margin: 8px 0;
+    }
+
+    .form_item>input {
+        flex: 1;
+        padding: 10px 8px;
+    }
+
+    .special {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    textarea {
+        width: 100%;
+    }
+
+    #display {
+        width: 60%;
+        margin: auto;
+        border: 2px solid red;
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+
+    button {
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <form action="">
+        <div class="form_item">
+            <input type="text" name="" id="name" placeholder="Input your full Name">
+            <input type="number" name="" id="age" placeholder="Input your age">
+        </div>
+
+        <div class="form_item special">
+            <div class="gender">
+                <input type="radio" name="gender" value="male"> Male
+                <input type="radio" name="gender" value="female"> female
+                <input type="radio" name="gender" value="others"> others
+            </div>
+            <div class="gender">
+                <select name="" id="select">
+                    <option value="select" disabled selected>Select</option>
+                    <option value="Web Developer">Web Developer</option>
+                    <option value="software">software Engineer</option>
+                    <option value="cyber Security">Cyber Security</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="form_item">
+            <textarea name="" id="textarea" cols="30" rows="10" placeholder="Comment"></textarea>
+        </div>
+
+        <button>Sumbit</button>
+    </form>
+
+
+    <div id="display"></div>
+</body>
+<script>
+    const display = document.getElementById("display");
+    const form = document.querySelector("form");
+    var nameInput = form["name"];
+    var ageInput = form["age"];
+    var genderInput = form["gender"];
+    var selectInput = form["select"];
+    var textAInput = form["textarea"];
+
+
+    var students = JSON.parse(localStorage.getItem("studentP")) || [];
+    console.log(students)
+
+    var addingCart = (name, age, gender, special, comment) => {
+        students.push({
+            name, age, gender, special, comment
+        });
+        localStorage.setItem("studentP", JSON.stringify(students))
+        return { name, age, gender, special, comment }
+    }
+
+    function createSection({ name, age, gender, special, comment }) {
+        var container = document.createElement("div");
+        var inputName = document.createElement("h2");
+        var inputAge = document.createElement("p");
+        var inputGender = document.createElement("p");
+        var inputSelect = document.createElement("p");
+        var inputAtext = document.createElement("p");
+
+        container.append(inputName,inputAge,  inputGender, inputSelect, inputAtext);
+        display.append(container);
+        inputName.innerHTML = "your name: " + name;
+        inputAge.innerHTML = "your age: " + age
+        inputGender.innerHTML = "your gender: " + gender;
+        inputSelect.innerHTML = "area of speciality: " + special;
+        inputAtext.innerHTML = "your comment: " + comment;
+
+    }
+    students.forEach(createSection)
+    form.onsubmit = function (e) {
+        e.preventDefault();
+        if (nameInput.value && ageInput.value && genderInput.value && selectInput.value && textAInput.value) {
+            var passing = addingCart(
+                nameInput.value,
+                ageInput.value,
+                genderInput.value,
+                selectInput.value,
+                textAInput.value
+            );
+
+
+            createSection(passing);
+
+            nameInput.value = "";
+            ageInput.value = "";
+            genderInput.value = "";
+            selectInput.value = "";
+            textAInput.value = ""
+        }
+
+
+    }
+</script>
+
+</html>

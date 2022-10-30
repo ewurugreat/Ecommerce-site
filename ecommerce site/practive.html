@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: helvetica;
+        }
+
+        .container {
+            display: flex;
+            margin: 2px 0 0 0;
+        }
+
+        .container_img img {
+            width: 100%;
+            height: 50vh;
+        }
+
+        .container_content {
+            width: 24.99999%;
+            position: relative;
+            margin: 0 6px;
+            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        .container_dec {
+            padding: 0px 10px;
+        }
+
+        h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-family: cursive;
+        }
+
+        p {
+            text-align: right;
+            margin: 0;
+        }
+
+        .add {
+            position: absolute;
+            top: 2%;
+            left: 1%;
+        }
+
+        h4 {
+            font-size: 1.4rem;
+            margin: 0;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 90%;
+            margin: 15px auto auto auto;
+            text-align: center;
+            border-collapse: collapse;
+
+        }
+
+        h3 {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        th {
+            background-color: rgb(192, 191, 191);
+        }
+
+        button {
+            color: red;
+        }
+
+        .img_c img {
+            height: 10vh;
+        }
+
+        td {
+            border: 1px solid lightgrey;
+        }
+
+        input[type="number"] {
+            width: 60px;
+        }
+
+        #count {
+            letter-spacing: 8px;
+            position: relative;
+        }
+    </style>
+    <h1 id="empty">YOUR CART IS EMPTY</h1>
+    <h4 class="fa fa-shopping-cart" id="count"> <i class="shopping-cart"> 0</i></h4>
+    <div class="container">
+
+        <div class="container_content">
+            <div class="container_img"> <img src="./images/gl1.png" alt=""></div>
+            <div class="container_dec">
+                <h3>Female sleeve</h3>
+                <p>$100</p>
+                <button class="add">Add</button>
+            </div>
+        </div>
+
+        <div class="container_content">
+            <div class="container_img"> <img src="./images/long6.png" alt=""></div>
+            <div class="container_dec">
+                <h3>Men sleeve</h3>
+                <p>$100</p>
+                <button class="add">Add</button>
+            </div>
+        </div>
+
+        <div class="container_content">
+            <div class="container_img"> <img src="./images/g10.png" alt=""></div>
+            <div class="container_dec">
+                <h3>yellow stike</h3>
+                <p>$100</p>
+                <button class="add">Add</button>
+            </div>
+        </div>
+
+        <div class="container_content">
+            <div class="container_img"> <img src="./images/g1 (6).png" alt=""></div>
+            <div class="container_dec">
+                <h3>Men woodies</h3>
+                <p>$100</p>
+                <button class="add">Add</button>
+            </div>
+        </div>
+
+
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <h3>S/N</h3>
+                </th>
+                <th>
+                    <h3>ITEM</h3>
+                </th>
+                <th>
+                    <h3>ITEM NAME</h3>
+                </th>
+                <th>
+                    <h3> PRICE</h3>
+                </th>
+                <th>
+                    <h3>QUANTITY</h3>
+                </th>
+                <th>
+                    <h3>TOTAL</h3>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <h2>GRAND TOTAL</h2>
+                </td>
+                <td colspan="2"><button onclick="clearCart()">Empty cart</button></td>
+                <td colspan="3">
+                    <h1>$0</h1>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+<script>
+    var add = document.getElementsByClassName("add");
+    let tbody = document.querySelector("tbody");
+    let removeBtn = document.getElementsByClassName("removeBtn")
+    let checkAdd = document.getElementById("empty").innerHTML;
+    for (let i = 0; i < add.length; i++) {
+        add[i].addEventListener("click", myAdd)
+    }
+    var cart = localStorage.getItem("cart_items") ? JSON.parse(localStorage.getItem("cart_items")) : [];
+    cart.forEach(divMaker)
+    function divMaker(text) {
+        let tr = document.createElement("tr");
+        tr.className = "tr_hold";
+        tr.innerHTML = ` <td><input type="checkbox"></td>
+                <td><div class="img_c"><img src="${text.itemImage}" alt=""></div></td>
+                <td class="item-name">${text.itemName}</td>
+                <td class="item-price"><h3>${text.itemPrice}</h3></td>
+                <td class="num"><input type="number" name="" id=""></td>
+                <td class="item-total"><h3>$0</h3></td>
+                <td><button class="removeBtn">Remove</button></td>`
+        tbody.append(tr)
+        for (let i = 0; i < removeBtn.length; i++) {
+            removeBtn[i].addEventListener("click", myRemove)
+        }
+
+    }
+    function myAdd(event) {
+        if (typeof (Storage) !== "undefined") {
+
+            let cart_parent = event.target.parentElement;
+            let cart_grand_parent = event.target.parentElement.parentElement;
+            var itemImage = cart_grand_parent.children[0].children[0].src
+
+            var cart_items = {
+                itemImage: cart_grand_parent.children[0].children[0].src,
+                itemName: cart_parent.children[0].innerText,
+                itemPrice: cart_parent.children[1].innerText.replace("$", ""),
+                itemSn: localStorage.getItem("cart_items")
+
+            }
+
+            cart.push(cart_items);
+            localStorage.setItem("cart_items", JSON.stringify(cart))
+            divMaker(cart);
+            location.reload();
+            addcount()
+
+
+        } else {
+            alert("This browser does not support local storage")
+        }
+    }
+
+
+    function clearCart() {
+        localStorage.clear();
+        location.reload()
+    }
+    addcount()
+
+
+    function myRemove() {
+        mychekRemoe(cart)
+    }
+
+    function mychekRemoe(text){
+    console.log(text)
+    }
+
+    function addcount() {
+        var cartCount = document.getElementsByClassName("tr_hold");
+        var counts = document.getElementById("count");
+        counts.innerHTML = cartCount.length;
+    }
+
+
+
+
+</script>
+
+</html>
